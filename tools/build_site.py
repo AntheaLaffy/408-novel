@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""build_site — 从 `正文/` 生成静态阅读站 + 每卷 EPUB。
+"""build_site — 从 `正文/` 生成静态阅读站，并从章节页转出 EPUB。
 
 设计目标
 --------
@@ -11,14 +11,12 @@
 
 用法
 ----
-    # 本地构建到 _site/（默认根路径 /）
-    python3 tools/build_site.py
-
-    # 预览
+    # 本地预览（根路径，产物在 _site/）
+    python3 tools/build_site.py --out _site --base /
     python3 -m http.server 8000 -d _site
 
-    # GitHub Pages 项目站（/仓库名/ 前缀）
-    python3 tools/build_site.py --base /408-novel/ \
+    # GitHub Pages（/仓库名/ 前缀，产物在 docs/）
+    python3 tools/build_site.py --out docs --base /408-novel/ \
         --site-url https://anthealaffy.github.io/408-novel/
 
     # 不生成 EPUB / 不子集化字体
