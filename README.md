@@ -50,6 +50,7 @@ tools/
   web2epub.py            # 章节页 HTML/CSS -> EPUB 3（pandoc）
   build_fonts.py         # 按站点用字子集化霞鹜文楷
   md2txt.py              # Markdown -> 平台导入用纯文本
+  publish.sh             # 重建 docs/、提交并推送
 site.json                # 书名、作者、简介、仓库地址
 ```
 
@@ -93,9 +94,15 @@ python3 tools/md2txt.py 正文/第一卷-六战清华哥
 
 ## 发布
 
-修改 `正文/` 下的 Markdown 后重新构建 `docs/`，提交并推送到 `main`。
-GitHub Pages 当前从 `main` 分支的 `/docs` 目录发布——生成的 HTML、CSS、
-字体和 EPUB 就是线上内容，不依赖 Actions 构建。
+修改 `正文/` 下的 Markdown 后，一条命令重建并发布：
+
+```bash
+tools/publish.sh "更新第二卷"
+```
+
+脚本会构建 `docs/`、提交改动并推送到 `main`。GitHub Pages 从 `main` 的
+`/docs` 目录直接发布——生成的 HTML、CSS、字体和 EPUB 就是线上内容，
+不依赖 Actions 构建。
 
 ## 排版与字体
 
