@@ -1,0 +1,183 @@
+/* ==========================================================================
+   EPUB 覆盖层：与网页共用 site.css，只修正电子墨水/阅读器里不成立的部分
+   ========================================================================== */
+
+body::before {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.9;
+  background: #f7f3ea;
+  color: #201d18;
+}
+
+section.level1 {
+  margin: 0;
+}
+
+/* 章节标题：书本里把“第 N 章”放在标题上方 */
+section.level1 > h1.chapter-title {
+  margin: 0 0 0.9em;
+  font-size: 1.55em;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  page-break-after: avoid;
+}
+
+h1.chapter-title .num {
+  display: block;
+  margin: 0 0 0.75em;
+  font-size: 0.42em;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: #8b8171;
+}
+
+h1.chapter-title .name {
+  display: block;
+}
+
+/* 卷名与字数 */
+.chapter-head {
+  margin: 0 0 2em;
+  padding-bottom: 1.2em;
+  border-bottom: 1px solid #e3dac9;
+  text-align: center;
+}
+
+.chapter-head p {
+  margin: 0.2em 0;
+  padding: 0;
+  text-indent: 0;
+  font-size: 0.8em;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: #8b8171;
+}
+
+.chapter-head p:first-child {
+  letter-spacing: 0.16em;
+}
+
+/* 正文 */
+.chapter-body {
+  font-size: 1em;
+  line-height: 2;
+  text-align: justify;
+}
+
+.chapter-body p {
+  margin: 0 0 0.58em;
+  text-indent: 2em;
+}
+
+.chapter-body p:last-child {
+  margin-bottom: 0;
+}
+
+.chapter-body strong {
+  font-weight: 500;
+}
+
+/* pandoc 会丢掉 blockquote 的 class，这里按普通引用块还原 */
+.chapter-body blockquote,
+blockquote {
+  margin: 1.2em 0;
+  padding: 0.8em 1.05em;
+  border-left: 2px solid #a63d2e;
+  background: #f2e3da;
+  color: #4d463c;
+  font-size: 0.95em;
+  line-height: 1.9;
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0.12em 0;
+  text-indent: 0;
+}
+
+.chapter-body blockquote p {
+  text-indent: 0;
+}
+
+pre {
+  page-break-inside: avoid;
+  border-radius: 2px;
+}
+
+h2.section {
+  display: block;
+  margin: 2.2em 0 1.1em;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #4d463c;
+  text-align: center;
+  page-break-after: avoid;
+}
+
+h2.section::before,
+h2.section::after {
+  content: "—";
+  margin: 0 0.55em;
+  color: #d0c4ad;
+}
+
+.sep {
+  margin: 2em 0;
+  color: #8b8171;
+  letter-spacing: 0.4em;
+  text-align: center;
+  font-size: 0.85em;
+}
+
+/* 封面后的书名页 */
+.titlepage {
+  margin-top: 18%;
+  text-align: center;
+}
+
+.titlepage .title {
+  font-size: 1.9em;
+  line-height: 1.45;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.titlepage .author {
+  margin-top: 2em;
+  font-size: 1em;
+  letter-spacing: 0.14em;
+  color: #4d463c;
+}
+
+.titlepage .date,
+.titlepage .subtitle {
+  display: none;
+}
+
+.page-chapter-footer,
+.chapter-foot {
+  display: none;
+}
+
+p {
+  orphans: 2;
+  widows: 2;
+}
+
+a {
+  color: #a63d2e;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

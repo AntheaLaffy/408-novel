@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第1章 空指针 · 408改考：最高的山！</title>
+<meta name="description" content="第一卷 · 第1章 空指针，408改考：最高的山！。空指针——一个考了六次的人，和一次真正的开始。"/>
+<meta name="author" content="如月风铃"/>
+<meta name="generator" content="tools/build_site.py"/>
+<link rel="icon" href="/408-novel/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/408-novel/assets/site.css"/>
+<link rel="alternate" type="application/epub+zip" href="/408-novel/download/v1.epub" title="EPUB"/>
+<link rel="canonical" href="https://anthealaffy.github.io/408-novel/read/v1/01.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="408改考：最高的山！"/>
+<meta property="og:title" content="第1章 空指针 · 408改考：最高的山！"/>
+<meta property="og:description" content="第一卷 · 第1章 空指针，408改考：最高的山！。空指针——一个考了六次的人，和一次真正的开始。"/>
+<meta property="og:image" content="https://anthealaffy.github.io/408-novel/assets/cover.jpg"/>
+<meta property="og:image:width" content="1086"/>
+<meta property="og:image:height" content="1448"/>
+<meta property="og:locale" content="zh_CN"/>
+<meta property="og:url" content="https://anthealaffy.github.io/408-novel/read/v1/01.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="第1章 空指针 · 408改考：最高的山！"/>
+<meta name="twitter:description" content="第一卷 · 第1章 空指针，408改考：最高的山！。空指针——一个考了六次的人，和一次真正的开始。"/>
+<meta name="twitter:image" content="https://anthealaffy.github.io/408-novel/assets/cover.jpg"/>
+<meta name="theme-color" content="#f7f3ea" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#141519" media="(prefers-color-scheme: dark)"/>
+<script>try{var t=localStorage.getItem("novel:theme");if(!t&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem("novel:font");if(f)document.documentElement.dataset.font=f}catch(e){}</script>
+
+</head>
+<body class="page-chapter">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/408-novel/" aria-label="408改考：最高的山！ 首页">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 26 12 8l6 10 4-6 8 14z" fill="currentColor"/><circle cx="24" cy="7" r="2.6" fill="var(--accent)"/></svg><span>408改考</span>
+      <span class="brand-sub">最高的山！</span>
+    </a>
+    <nav class="header-nav" aria-label="导航">
+      <button class="icon-btn" type="button" data-toc-open aria-label="打开目录" title="目录"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6.5h16M4 12h11M4 17.5h16"/></svg></button>
+      <a class="nav-link" href="https://github.com/AntheaLaffy/408-novel" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div class="font-ctl" role="group" aria-label="字号"><button class="icon-btn" type="button" data-font-dec aria-label="减小字号" title="减小字号">A−</button><button class="icon-btn" type="button" data-font-inc aria-label="增大字号" title="增大字号">A+</button></div>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
+              aria-label="切换深浅色" title="深浅色">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="progress" aria-hidden="true"><span></span></div>
+<div class="reading">
+  <article class="chapter" data-chapter-id="v1-01"
+           data-chapter-url="/408-novel/read/v1/01.html"
+           data-chapter-label="第一卷 · 第1章 空指针">
+    <header class="chapter-head">
+      <p class="chapter-kicker"><a href="/408-novel/volumes/v1.html">第一卷 · 六战清华哥</a></p>
+      <h1>空指针</h1>
+      <p class="chapter-meta">第 1 章 · 3,308 字 · 约 7 分钟</p>
+    </header>
+    <div class="chapter-body">
+<p>2026年3月10日，星期二，上午九点四十。</p>
+<p>陆沉正在改一个导出接口的 bug。</p>
+<p>客户叫启明零售，做连锁便利店的，全国一千多家门店。他们每个月十号早上要拿到上个月的对账单，财务拿去和供应商核账，晚一天，区域经理的电话就会打到商务那边，商务再打到项目经理这边，项目经理再在群里 @ 陆沉。</p>
+<p>这次的问题出在“创建人”这一列。</p>
+<p>凌晨两点十七分，定时任务跑完，日志里一片红。陆沉早上到工位第一件事就是翻日志，翻到第三屏，看见一行熟悉得让人想笑的东西：</p>
+<pre><code>java.lang.NullPointerException: Cannot invoke "com.yunshu.user.User.getName()"
+because the return value of "com.yunshu.user.UserClient.getById(Long)" is null
+    at com.yunshu.report.mapper.ReportRowMapper.toRow(ReportRowMapper.java:118)</code></pre>
+<p>空指针。</p>
+<p>他大学第一次听老师说“空指针是 Java 程序员最好的朋友”的时候，还觉得这句话挺幽默。现在他不这么觉得了。现在他觉得空指针是那种每年过年都要来你家坐一会儿的亲戚，你不能赶他走，还得给他倒水。</p>
+<p>他没有立刻去看代码。</p>
+<p>他先点开了右边那一栏。</p>
+<p>灵犀的侧边栏是浅灰色的，像一张写了很多遍又擦干净的纸。光标停在报错的那一行，下面自动浮出一段提示：</p>
+<blockquote class="quote">
+<p><strong>检测到可能为空的对象访问</strong><br/>
+<code>user.getName()</code> 存在空引用风险。<br/>
+建议改为：</p>
+<pre><code>String creatorName = user == null ? "-" : user.getName();</code></pre>
+<p>是否应用？预计耗时 8 秒。</p>
+</blockquote>
+<p>下面两个按钮，<strong>应用</strong> 和 <strong>忽略</strong>，蓝得很有礼貌。</p>
+<p>陆沉盯着那行代码看了两秒。</p>
+<p>他知道这不对。他也说不清哪里不对。他只是有一种很模糊的、像牙缝里塞了东西的感觉：这个报错说的是“用户是空的”，但一张对账单上为什么会有一个空的用户？</p>
+<p>不过这种感觉很快被另一种东西盖过去了：项目经理在群里问，十点前能不能好。</p>
+<p>他点了“应用”。</p>
+<p>八秒之后，IDE 里多了一行判空，红字没了，编译通过。他重新跑了一遍本地任务，导出成功，Excel 打开，两千多行数据整整齐齐。他把文件发到测试群，说“修好了，麻烦验证”。</p>
+<p>九点五十八分。他甚至还来得及去接了杯水。</p>
+<p>十点二十，测试回来了。</p>
+<p>不是“通过”，是一张截图。截图上，创建人那一列，有一百多行显示着一个横杠。</p>
+<p>“陆工，这些是什么？”</p>
+<p>陆沉把截图放大，一行一行往下看。</p>
+<p>那一百多行集中在同一个时间段，客户名称是“启明零售-华东二区”。他查了查，都是同一个人录的单据。他把工号复制出来，去用户中心查，接口返回：</p>
+<pre><code>{"code": 200, "message": "success", "data": null}</code></pre>
+<p>200。成功。数据是空的。</p>
+<p>他又查了第二个、第三个、第十个，全一样。</p>
+<p>那一瞬间，他明白问题在哪儿了。</p>
+<p>这一百三十七个人，都是已经离职的员工。他们离职之后，账号在用户中心被注销，注销的逻辑是“删掉这条记录”，而不是“标记为已删除”。于是任何按 ID 去查他们的人，都会拿到一个 200 和一个 null。系统认为这是一次成功的查询，只是恰巧什么也没查到。</p>
+<p>而启明零售的对账单，需要保留历史单据上的创建人姓名。财务不接受横杠，也不接受“未知用户”。他们要的是那个已经离职的、叫“周敏”的人的名字。</p>
+<p>陆沉坐在椅子上，慢慢地靠回椅背。</p>
+<p>灵犀给他的答案，没有错。</p>
+<p>灵犀只是回答了一个错误的问题。</p>
+<p>他问的是“怎么让这个异常消失”，灵犀就给了他一行判空。异常消失了，报表能导出了，工单可以关了。至于那一百三十七行横杠，那不是异常，那是“业务表现”，系统不会报警，只有人会。</p>
+<p>但灵犀也没有能力发现真正的问题。</p>
+<p>它的任务范围只有 report-export 这个仓库。用户中心的库不在它的上下文里，上游的字段变更它看不到，接口文档也没有同步。单元测试里的 mock 永远返回一个用户，回归测试也没有覆盖“用户被物理删除”的情况。评审 Agent 只检查 diff 和现有测试，测试是绿的，它就通过了。</p>
+<p>失败的不是一个模型，是一条流程：工具权限、测试覆盖、跨系统依赖、结果验收，每一环都差一点。而陆沉自己，早上也点了“应用”。</p>
+<p>他重新打开代码，开始往上翻调用链。</p>
+<p><code>ReportRowMapper</code> 调 <code>ReportService</code>，<code>ReportService</code> 调 <code>UserClient</code>，<code>UserClient</code> 是基础平台部维护的 SDK，SDK 里面封了一层 Feign，Feign 后面是用户中心的 <code>/internal/users/{id}</code>。再往上，是两年前某次“统一用户体系”的重构，那次重构之后，全公司有十几个地方在查用户，每一个地方都默认“查得到”。</p>
+<p>他把这十几个调用点一个个点开。</p>
+<p>有的地方判了空，有的地方没判，有的地方判了空然后用 <code>Optional.ofNullable().orElseThrow()</code> 抛了个自定义异常——那等于没判，只是把 NPE 换成了一个看起来更有文化的错误。</p>
+<p>他忽然想起周晓枫说过的一句话：我们不是在一个系统里工作，我们是在十个系统的接缝里工作。</p>
+<p>十一点，他开始找替代方案。</p>
+<p>用户中心不能改，那边排期排到四月。基础平台部的同事在群里回复得很客气：“这个属于历史数据兼容问题，我们评估一下。”——在公司语境里，“评估一下”约等于“今年别想了”。</p>
+<p>他去翻数据仓库，找到一张 HR 的员工快照表，每天凌晨同步一次，里面有工号、姓名、在职状态。表很脏，字段名叫 <code>emp_nm</code>、<code>stat_cd</code>，注释是空的，但数据是全的。</p>
+<p>他写了一段取数逻辑：先按用户 ID 查，查不到就拿单据上的工号去快照表兜底，兜底再查不到，才显示“已注销用户”。</p>
+<p>写完是下午两点。他没吃午饭。</p>
+<p>三点，测试环境跑通。四点，客户在群里回了一个“OK”。</p>
+<p>四点二十，他提交了代码。</p>
+<p>提交信息他想了半分钟，最后写的是：</p>
+<pre><code>fix: 导出对账单创建人为空时使用员工快照兜底</code></pre>
+<p>蒋文斌是在四点半找他的。</p>
+<p>组长站在他工位旁边，手里拿着手机，屏幕上是他刚提交的那个 MR。</p>
+<p>“修好了？”</p>
+<p>“修好了。”</p>
+<p>“花了多久？”</p>
+<p>陆沉算了一下：“从早上到刚才，大概四个小时。”</p>
+<p>蒋文斌点点头。</p>
+<p>“四小时，一个空指针。”</p>
+<p>“不是空指针，”陆沉说，“是上游注销用户的时候把记录删了，我们这边十几个地方都默认查得到——”</p>
+<p>“我知道。”蒋文斌打断他，“我看你 MR 描述了。”</p>
+<p>他顿了一下。</p>
+<p>“我的意思是，下次别让它变成四个小时。”</p>
+<p>陆沉张了张嘴。</p>
+<p>他想说，这四个小时里，有一个小时是在找那一百三十七行数据从哪儿来的，一个小时是在翻调用链，剩下两个小时在补上游的坑。他想说，如果他早上没有点“应用”，如果他没有先问一句“这个 user 为什么会是 null”，这四个小时本来可以变成二十分钟。</p>
+<p>但这些话在嘴里转了一圈，最后变成了一句：</p>
+<p>“好。”</p>
+<p>蒋文斌拍了拍他的肩，走了。</p>
+<div class="sep">＊　＊　＊</div>
+<p>下午五点五十，部门大群里弹出一条消息。</p>
+<p>发消息的是部门的行政，标题很长：</p>
+<p><strong>《2026 年 2 月 AI 代码采纳率排行榜（部门）已更新》</strong></p>
+<p>群里立刻热闹起来。</p>
+<p>“又是月初公开处刑环节。”</p>
+<p>“我上个月 31%，我已经准备好写检讨了。”</p>
+<p>“低于 40% 的要参加培训，兄弟你完了。”</p>
+<p>陆沉点开表格。</p>
+<p>表格是按组排的，第一列是姓名，第二列是采纳率，第三列是“AI 生成代码行数占比”，第四列是“评审通过率”，第五列是“事故数”。</p>
+<p>他往下拉，找到自己的名字。</p>
+<p><strong>陆沉｜62.3%｜58.1%｜96.2%｜0</strong></p>
+<p>组里排第三。</p>
+<p>蒋文斌在群里发了两个字：“不错。”</p>
+<p>后面跟着一串鼓掌的表情。</p>
+<p>陆沉看着那个 62.3，看了很久。</p>
+<p>他想起早上那一行判空。那是灵犀写的。他想起中午那段取数逻辑。那是他写的，但字段名是灵犀帮他从那张没有注释的表里猜出来的。他想起下午那个 MR 描述。那是他写的，写了三行，灵犀帮他扩成了七行，还加了一个“影响范围”小节。</p>
+<p>他关掉表格，打开自己的提交记录，一页一页往前翻。</p>
+<p>二月的提交，一月的提交，去年十二月的提交。</p>
+<p>他想找一段完完全全由自己敲出来的代码。不是灵犀补全的，不是灵犀生成的，不是他复制粘贴改了两个变量名的。</p>
+<p>翻了整整三页。</p>
+<p>他没找到。</p>
+    </div>
+    <footer class="chapter-foot">
+      <nav class="pager" aria-label="章节翻页">
+        <span class="spacer" aria-hidden="true"></span>
+        <a class="next" href="/408-novel/read/v1/02.html" data-next-chapter><span class="lbl">下一章 →</span><span class="ttl">第2章 百分之六十二</span></a>
+      </nav>
+      <div class="chapter-actions">
+        <a href="/408-novel/volumes/v1.html">本卷目录</a>
+        <a href="/408-novel/#volumes">全部目录</a>
+        <a href="/408-novel/download/v1.epub" download>下载 EPUB</a>
+      </div>
+    </footer>
+  </article>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">408改考：最高的山！</p>
+      <p class="footer-note">© 2026 如月风铃 · 文字版权归作者所有<br/>
+      正文与 EPUB 由仓库 Markdown 自动生成 · 最近更新 2026-10-27</p>
+    </div>
+    <nav class="footer-links" aria-label="页脚">
+      <a href="/408-novel/#volumes">目录</a>
+      <a href="/408-novel/download/v1.epub" download>下载 EPUB</a>
+      <a href="https://github.com/AntheaLaffy/408-novel" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="/408-novel/assets/fonts/OFL.txt" target="_blank" rel="noopener">字体授权</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="drawer" id="toc-drawer" aria-hidden="true">
+  <div class="drawer-backdrop" data-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="toc-title">
+    <div class="drawer-head">
+      <h2 id="toc-title">目录</h2>
+      <button class="icon-btn" type="button" data-close aria-label="关闭目录" title="关闭">×</button>
+    </div>
+    <nav class="drawer-body" aria-label="章节目录">
+      <p class="drawer-vol">第一卷 <span>六战清华哥</span></p><ul class="drawer-list"><li><a href="/408-novel/read/v1/01.html" class="is-current" aria-current="page"><span class="num">01</span><span>空指针</span></a></li><li><a href="/408-novel/read/v1/02.html"><span class="num">02</span><span>百分之六十二</span></a></li><li><a href="/408-novel/read/v1/03.html"><span class="num">03</span><span>N+1</span></a></li><li><a href="/408-novel/read/v1/04.html"><span class="num">04</span><span>我也没了</span></a></li><li><a href="/408-novel/read/v1/05.html"><span class="num">05</span><span>两瓶啤酒</span></a></li><li><a href="/408-novel/read/v1/06.html"><span class="num">06</span><span>五楼靠窗</span></a></li><li><a href="/408-novel/read/v1/07.html"><span class="num">07</span><span>2027，不追风口</span></a></li><li><a href="/408-novel/read/v1/08.html"><span class="num">08</span><span>两千人的群</span></a></li><li><a href="/408-novel/read/v1/09.html"><span class="num">09</span><span>六战清华</span></a></li><li><a href="/408-novel/read/v1/10.html"><span class="num">10</span><span>我老婆呢？</span></a></li><li><a href="/408-novel/read/v1/11.html"><span class="num">11</span><span>她没跑</span></a></li><li><a href="/408-novel/read/v1/12.html"><span class="num">12</span><span>2020</span></a></li><li><a href="/408-novel/read/v1/13.html"><span class="num">13</span><span>六次开始</span></a></li><li><a href="/408-novel/read/v1/14.html"><span class="num">14</span><span>本校就好</span></a></li></ul><p class="drawer-vol">第二卷 <span>明天一定</span></p><ul class="drawer-list"><li><a href="/408-novel/read/v2/15.html"><span class="num">15</span><span>三月二十一日</span></a></li><li><a href="/408-novel/read/v2/16.html"><span class="num">16</span><span>满分一百五</span></a></li></ul>
+    </nav>
+  </aside>
+</div>
+<script src="/408-novel/assets/site.js" defer></script>
+</body>
+</html>

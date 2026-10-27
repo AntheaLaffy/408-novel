@@ -1,0 +1,18 @@
+# 构建产物
+_site/
+dist/
+.cache/
+__pycache__/
+*.pyc
+
+# 编辑器 / 系统
+.DS_Store
+.venv/
+.idea/
+.vscode/
+
+# 创作内部资料，不随站点发布
+11408.md
+参考资料/
+旧版/
+正文/进度.md
