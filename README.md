@@ -50,6 +50,7 @@ tools/
   web2epub.py            # 章节页 HTML/CSS -> EPUB 3（pandoc）
   build_fonts.py         # 按站点用字子集化霞鹜文楷
   md2txt.py              # Markdown -> 平台导入用纯文本
+  wordcount.py           # 汉字 / 字符 / 标点分口径统计
   publish.sh             # 重建 docs/、提交并推送
 site.json                # 书名、作者、简介、仓库地址
 ```
