@@ -82,7 +82,7 @@
   const fontDec = document.querySelector("[data-font-dec]");
 
   const applyFont = (size, persist) => {
-    const index = Math.max(0, Math.min(FONTS.length - 1, FONTS.indexOf(size)));
+    const index = Math.max(0, Math.min(FONTS.length - 1, FONTS.indexOf(FONTS.includes(size) ? size : "md")));
     const current = FONTS[index];
     if (current === "md") {
       delete root.dataset.font;
@@ -121,7 +121,7 @@
     const focusable = () =>
       Array.from(
         drawer.querySelectorAll(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          'a[href], input, button:not([disabled]), [tabindex]:not([tabindex="-1"])'
         )
       ).filter((el) => el.offsetParent !== null);
 
@@ -170,9 +170,10 @@
 
   /* ------------------------------------------------------------ 阅读进度 */
 
-  const chapter = document.querySelector("[data-chapter-id]");
+  const chapter = document.querySelector("article[data-chapter-id]");
   const progressBar = document.querySelector(".progress span");
-  const readMap = readJson(KEYS.read, {}) || {};
+  const savedRead = readJson(KEYS.read, {});
+  const readMap = savedRead && typeof savedRead === "object" && !Array.isArray(savedRead) ? savedRead : {};
 
   const scrollPercent = () => {
     const height = document.documentElement.scrollHeight - window.innerHeight;
@@ -210,6 +211,8 @@
     const onScroll = () => {
       const pct = scrollPercent();
       if (progressBar) progressBar.style.width = pct.toFixed(2) + "%";
+      const percentLabel = document.querySelector("[data-reading-percent]");
+      if (percentLabel) percentLabel.textContent = "已读 " + Math.round(pct) + "%";
       if (pct > 92) markRead(id);
       const now = Date.now();
       if (now - lastSave > 900) {
@@ -245,8 +248,9 @@
       restoring = true;
       const restore = () => {
         const height = document.documentElement.scrollHeight - window.innerHeight;
-        if (height > 0) window.scrollTo(0, (last.pct / 100) * height);
+        if (height > 0) window.scrollTo({ top: (last.pct / 100) * height, behavior: "instant" });
         restoring = false;
+        onScroll();
       };
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => setTimeout(restore, 60));
@@ -278,6 +282,30 @@
       if (wrap) wrap.hidden = false;
     }
   }
+
+  /* 搜索只匹配章号与标题，避免字数、阅读时长误匹配。 */
+  document.querySelectorAll("[data-search-scope]").forEach((scope) => {
+    const input = scope.querySelector("[data-chapter-search]");
+    const status = scope.querySelector("[data-search-status]");
+    const rows = Array.from(scope.querySelectorAll("li"));
+    input.addEventListener("input", () => {
+      const query = input.value.trim().toLocaleLowerCase();
+      let count = 0;
+      rows.forEach((row) => {
+        const number = row.querySelector(".num").textContent.trim();
+        const title = row.querySelector(".ttl") || row.querySelector("a span:last-child");
+        const matches = !query || (number + " " + title.textContent).toLocaleLowerCase().includes(query)
+          || ("第" + Number(number) + "章").includes(query);
+        row.hidden = !matches;
+        if (matches) count++;
+      });
+      scope.querySelectorAll(".drawer-list").forEach((list) => {
+        list.previousElementSibling.hidden = !Array.from(list.children).some((row) => !row.hidden);
+      });
+      status.hidden = !query;
+      status.textContent = count ? "找到 " + count + " 个章节" : "没有找到相关章节，试试其他章名或序号。";
+    });
+  });
 
   /* ------------------------------------------------------------ 键盘翻页 */
 

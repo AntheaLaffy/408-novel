@@ -363,6 +363,7 @@ def volume_card(cfg: dict, site: Site, volumes: list[Volume], volume: Volume) ->
 
 def render_home(cfg: dict, site: Site, volumes: list[Volume], chapters: list[Chapter]) -> str:
     first = chapters[0]
+    latest = chapters[-1]
     total_chars = sum(v.chars for v in volumes)
     eyebrow = cfg.get("eyebrow", "现实主义 · 计算机考研 · AI 时代")
     cards = "\n".join(volume_card(cfg, site, volumes, v) for v in volumes)
@@ -414,14 +415,20 @@ def render_home(cfg: dict, site: Site, volumes: list[Volume], chapters: list[Cha
              alt="{esc(cfg["title"])} 封面" fetchpriority="high"/>
       </div>
       <span class="seal">{esc(status)}</span>
+      <p class="cover-caption">一本关于重新开始的小说</p>
     </div>
   </div>
   {MOUNTAINS}
 </section>
 
+<div class="latest-strip">
+  <span class="latest-tag">最新章节</span>
+  <a href="{site.u(f"read/{latest.volume.slug}/{latest.slug}.html")}">{esc(latest.full_label)} <span aria-hidden="true">↗</span></a>
+  <time datetime="{cfg.get('_updated', '')}">{cfg.get('_updated', '')}</time>
+</div>
 <section class="section" id="volumes">
   <div class="section-head">
-    <h2>分卷</h2>
+    <h2><span class="section-index">01 /</span> 翻开故事</h2>
     <p>{len(volumes)} 卷 · {format_wan(total_chars)} 万字 · 最近更新 {cfg.get("_updated", "")}</p>
   </div>
   <div class="volume-grid">
@@ -495,8 +502,12 @@ def render_volume(cfg: dict, site: Site, volumes: list[Volume], volume: Volume) 
   </div>
 </section>
 
-<section class="toc-block">
-  <h2 class="toc-title">章节目录</h2>
+<section class="toc-block" data-search-scope>
+  <div class="catalog-toolbar">
+    <h2 class="toc-title">章节目录</h2>
+    <label class="chapter-search"><span>查找章节</span><input type="search" data-chapter-search placeholder="输入章名或序号" autocomplete="off"/></label>
+  </div>
+  <p class="search-status" data-search-status role="status" hidden></p>
   <ol class="chapter-list">
 {chr(10).join(rows)}
   </ol>
@@ -539,7 +550,9 @@ def render_drawer(volumes: list[Volume], site: Site, current: Chapter) -> str:
       <h2 id="toc-title">目录</h2>
       <button class="icon-btn" type="button" data-close aria-label="关闭目录" title="关闭">×</button>
     </div>
-    <nav class="drawer-body" aria-label="章节目录">
+    <nav class="drawer-body" aria-label="章节目录" data-search-scope>
+      <label class="chapter-search"><span>查找章节</span><input type="search" data-chapter-search placeholder="输入章名或序号" autocomplete="off"/></label>
+      <p class="search-status" data-search-status role="status" hidden></p>
       {"".join(groups)}
     </nav>
   </aside>
@@ -574,6 +587,11 @@ def render_chapter(
     volume = chapter.volume
     body = f"""
 <div class="progress" aria-hidden="true"><span></span></div>
+<div class="reader-tools" aria-label="阅读工具">
+  <button type="button" data-toc-open>章节目录</button>
+  <span data-reading-percent>已读 0%</span>
+  <a href="#main" aria-label="回到本章顶部">↑ 回顶部</a>
+</div>
 <div class="reading">
   <article class="chapter" data-chapter-id="{chapter.id}"
            data-chapter-url="{site.u(f"read/{volume.slug}/{chapter.slug}.html")}"
