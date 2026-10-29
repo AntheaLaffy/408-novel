@@ -473,9 +473,6 @@ def main(argv: list[str]) -> int:
             print(f"- {line}")
         if args.check:
             return 1
-    short = [c for c in all_chapters(volumes) if c.written and c.han < 2500]
-    if short:
-        print(f"提示：{len(short)} 章低于 2500 汉字下限（已发布章节不返工；新章按 2500—4000 写）。")
     return 0
 
 
