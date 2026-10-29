@@ -64,7 +64,7 @@
     <header class="chapter-head">
       <p class="chapter-kicker"><a href="/408-novel/volumes/v3.html">第三卷 · 学校不是名字</a></p>
       <h1>依赖缺失</h1>
-      <p class="chapter-meta">第 41 章 · 5,669 字 · 约 13 分钟</p>
+      <p class="chapter-meta">第 41 章 · 5,641 字 · 约 13 分钟</p>
     </header>
     <div class="chapter-body">
 <p>5月7日，星期四。</p>
@@ -80,7 +80,7 @@
 <p>里面只有一个文件：</p>
 <p><strong>0620_800epoch.ckpt　1.4GB</strong></p>
 <p>修改时间：2022/6/12 4:12。</p>
-<p>他记得这个文件。训练断断续续跑了四天，这是第六百二十次迭代、第八百轮。他当时不知道哪个好，就留了最后一个。</p>
+<p>他记得这个文件。训练断断续续跑了四天，文件名是自己改过的，“0620”指什么，他已经想不起来。他当时留了这个最大的文件，以为以后总能用上。</p>
 <p>旁边还有一个 <code>configs</code> 文件夹。</p>
 <p>他点开，里面是 <code>myvoice.yaml</code>。</p>
 <p>用记事本打开，前面几十行都是参数：</p>
@@ -159,7 +159,7 @@ tqdm</code></pre>
 <p>他又搜：“Python 3.8 Windows 安装包 2026”。</p>
 <p>出来的第一条是一个论坛帖子，标题是“3.8 装不上 torch 怎么办”。</p>
 <p>第二条是某个大学的镜像站。</p>
-<p>他下载了一个 3.8 的安装包，六十多兆，下了一分半。</p>
+<p>他下载了一个旧版Windows安装包。</p>
 <p>下完，他把鼠标停在安装包上，没有点。</p>
 <p>装第二个 Python，要改环境变量，要分清哪个 pip 对应哪个 Python。他以前干过，干到一半把系统变量删错，重装了一次系统。</p>
 <p>那次之后，他遇到环境问题就换项目。</p>
@@ -202,8 +202,8 @@ checkpoint：0620_800epoch.ckpt（1.4GB）
 <p>再跑。</p>
 <pre><code>ImportError: cannot import name 'DiffSinger' from 'models.model'</code></pre>
 <p>他打开 <code>models/model.py</code>。</p>
-<p>第一行是 <code>class DiffSinger(nn.Module):</code>。</p>
-<p>名字是对的。</p>
+<p>搜到的那行是 <code># class DiffSinger(nn.Module):</code>。</p>
+<p>名字前面有个井号。</p>
 <p>再往下看，文件末尾有一行被注释掉的代码，和一行没写完的 <code>return</code>。</p>
 <p>这个文件是坏的。</p>
 <div class="sep">＊　＊　＊</div>
@@ -223,15 +223,15 @@ checkpoint：0620_800epoch.ckpt（1.4GB）
 <p>两个版本的文件结构不一样。</p>
 <div class="sep">＊　＊　＊</div>
 <p>四点，他试了第三种办法。</p>
-<p>他在 GitHub 上搜 DiffSinger，找到官方仓库。</p>
-<p>仓库首页写着最新版本，2025 年更新。</p>
+<p>他在 GitHub 上搜 DiffSinger，点开一个名称相近的仓库。</p>
+<p>页面有2025年的提交记录，他把它当成了新版。</p>
 <p>他下载了 zip，解压，把 <code>requirements.txt</code> 打开。</p>
 <pre><code>torch&gt;=2.1
 numpy&gt;=1.26</code></pre>
 <p>跟他硬盘里那份完全不一样。</p>
 <p>他坐在那儿，看着两个文件夹：一个 2022 年的，一个 2025 年的。</p>
 <p>旧的有权重，代码坏了。</p>
-<p>新的有代码，权重不认。</p>
+<p>新的有代码，能不能配上旧文件，他不知道。</p>
 <div class="sep">＊　＊　＊</div>
 <p>五点，他打开网页版 AI。</p>
 <p>输入框里，他先打了一行：</p>
@@ -240,7 +240,7 @@ numpy&gt;=1.26</code></pre>
 <p>这句话他打过很多次。2023 年打过，2024 年打过，上个月打“帮我做一个完全个性化的 408 教程”也算一次。</p>
 <p>每次打完之后，他都会得到一个漂亮的新东西，然后花两天时间配置，再花三天时间放弃。</p>
 <p>他把输入框清空，重新打：</p>
-<p><strong>“我有一份 2022 年的 DiffSinger 代码，checkpoint 是 1.4GB，但代码里的 model.py 被改坏了。官方仓库已经更新到 2025 年，权重加载不了。现在只想让这个 checkpoint 跑出一段音频。应该先做什么？”</strong></p>
+<p><strong>“我有一份2022年的歌声合成代码，留着1.4GB的文件，但model.py被自己改坏了。我又下了一份名字相近的仓库，不知道能不能配上。现在只想先读出旧文件。该查什么？”</strong></p>
 <p>发出去。</p>
 <p>AI 回了很长一段。</p>
 <p>第一段说，建议先确认 checkpoint 的保存格式。</p>
@@ -256,16 +256,14 @@ for k in list(ckpt["state_dict"].keys())[:10]:
 <p>陆沉把这段回答看完。</p>
 <p>最后一句他同意。</p>
 <p>但他没有关掉页面。</p>
-<p>他把那段代码复制到 PowerShell 里，把路径改成自己的，回车。</p>
+<p>他把那段代码存成一个检查脚本，改好文件路径，再从PowerShell运行。</p>
 <p>屏幕上出来一堆红字：</p>
 <pre><code>UnpicklingError: invalid load key, '&lt;'.</code></pre>
-<p>他查了一下，这个 checkpoint 不是用 <code>torch.save</code> 存的，是另一个框架的格式。</p>
+<p>报错停在读文件的第一步，连键名都没打印出来。这个文件究竟存的是什么，他还不知道。</p>
 <div class="sep">＊　＊　＊</div>
 <p>六点，林知遥打来电话。</p>
 <p>“你今天做了多少？”</p>
-<p>“十二道。”</p>
-<p>“上午不是做了三十道？”</p>
-<p>“上午三十道，下午没做。”</p>
+<p>“上午网络三十道，下午没做新题。”</p>
 <p>电话那头停了一下。</p>
 <p>“你在干嘛？”</p>
 <p>“修一个东西。”</p>
@@ -321,12 +319,12 @@ for k in list(ckpt["state_dict"].keys())[:10]:
 3. 改 infer.py: modules → models
    → model.py 里 DiffSinger 类不完整（2022 年改到一半）
 
-4. 下载 2025 官方仓库
-   → requirements 不兼容，权重格式不认
+4. 下载另一份仓库代码
+   → 依赖要求不同，尚未确认能否配旧文件
 
 5. torch.load checkpoint
    → UnpicklingError: invalid load key, '&lt;'
-   → 不是 torch.save 格式</code></pre>
+   → 文件格式与完整性待核</code></pre>
 <p>写完，他盯着这五条看。</p>
 <p>以前他不会写这个。</p>
 <p>以前他遇到第一个报错，就换个教程；遇到第二个，就换个项目；遇到第三个，就在群里问“有没有大佬带”。</p>
@@ -356,15 +354,14 @@ for k in list(ckpt["state_dict"].keys())[:10]:
 <p>他把硬盘里的整个 <code>DiffSinger</code> 文件夹复制了一份到电脑上，命名 <code>DiffSinger-2022-备份</code>。</p>
 <p>复制到一半，提示空间不足。</p>
 <p>他看了一眼 C 盘：还剩 8.2G。</p>
-<p>他关掉复制，把桌面上几个没用的安装包删了，清空回收站，又删了两个游戏留下的文件夹。</p>
+<p>他关掉复制，把桌面上几个没用的安装包删了，清空回收站，把另外几个旧下载包移到了别处。</p>
 <p>再复制。</p>
 <p>这次成功了。</p>
 <div class="sep">＊　＊　＊</div>
 <p>九点四十，他打开错题本。</p>
 <p>5.7 那一格，他写：</p>
 <p><strong>网络 30 道，对 14。</strong></p>
-<p><strong>硬盘 3 小时。</strong></p>
-<p><strong>做题 12 道。</strong></p>
+<p><strong>下午没做新题。</strong></p>
 <p>写完，他想了想，在后面补了一句：</p>
 <p><strong>以后只有星期天晚上碰硬盘。</strong></p>
 <p>然后他把错题本合上，打开 408 的教材。</p>
@@ -394,7 +391,7 @@ for k in list(ckpt["state_dict"].keys())[:10]:
     <div>
       <p class="footer-brand">408改考：最高的山！</p>
       <p class="footer-note">© 2026 如月风铃 · 文字版权归作者所有<br/>
-      正文与 EPUB 由仓库 Markdown 自动生成 · 最近更新 2026-10-28</p>
+      正文与 EPUB 由仓库 Markdown 自动生成 · 最近更新 2026-10-29</p>
     </div>
     <nav class="footer-links" aria-label="页脚">
       <a href="/408-novel/#volumes">目录</a>
