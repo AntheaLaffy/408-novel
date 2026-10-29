@@ -1,3 +1,6 @@
+# 工具状态
+.project-maintenance/
+
 # 构建产物
 _site/
 dist/
@@ -16,6 +19,6 @@ __pycache__/
 大纲/
 agents/
 AGENTS.md
-参考资料/
+素材库/
 旧版/
 正文/进度.md

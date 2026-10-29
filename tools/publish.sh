@@ -4,6 +4,9 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 message="${1:-更新正文}"
+
+# 文档与正文对不上就先停下（章号、卷区间、生成块）
+python3 tools/status.py --check
 python3 tools/build_site.py \
   --out docs \
   --base /408-novel/ \
